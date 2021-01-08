@@ -1,5 +1,6 @@
 import { reactive, ref, Ref } from '@vue/composition-api';
 import { RegisterData, UserRole } from '@/types';
+import VueRouter from 'vue-router';
 
 const initialData = {
   credentials: {
@@ -32,7 +33,7 @@ export function useRegister() {
   };
 }
 
-export function useEventHandlers(data: RegisterData) {
+export function useEventHandlers(data: RegisterData, router: VueRouter) {
   const isFormValid: Ref<boolean> = ref(true);
   const refForm: Ref<any> = ref(null);
 
@@ -40,6 +41,7 @@ export function useEventHandlers(data: RegisterData) {
     refForm.value.validate();
     if (isFormValid.value) {
       console.log('data', data);
+      router.push('/dashboard');
     }
   };
 

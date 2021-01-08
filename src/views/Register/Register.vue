@@ -41,9 +41,9 @@ import { defineComponent } from '@vue/composition-api';
 import { useRegister, useEventHandlers } from './Register';
 
 export default defineComponent({
-  setup() {
+  setup(props, { root }) {
     const { data, USER_ROLES } = useRegister();
-    const { submit, isFormValid, refForm } = useEventHandlers(data);
+    const { submit, isFormValid, refForm } = useEventHandlers(data, root.$router);
 
     return {
       data,
