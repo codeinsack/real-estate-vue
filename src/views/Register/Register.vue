@@ -6,12 +6,26 @@
           <VCardTitle>Register</VCardTitle>
           <VCardSubtitle>Please enter your data</VCardSubtitle>
           <VCardText>
-            <VTextField v-model="data.credentials.email" placeholder="Email" />
-            <VTextField v-model="data.credentials.password" placeholder="Password" />
-            <VTextField v-model="data.name" placeholder="Name" />
-            <VTextField v-model="data.sureName" placeholder="Surname" />
-            <VTextField v-model="data.telephoneNumber" placeholder="Phone" />
-            <VSelect v-model="data.userRole" :items="USER_ROLES" placeholder="Role" />
+            <VForm ref="refForm" v-model="isFormValid">
+              <VTextField v-model="data.credentials.email" placeholder="Email" />
+              <VTextField
+                v-model="data.credentials.password"
+                type="password"
+                placeholder="Password"
+                validate-on-blur
+              />
+              <VTextField
+                v-model="data.name"
+                :rules="[
+                  (v) => !!v || 'Name is required',
+                  (v) => v.length >= 3 || 'Length is too short',
+                ]"
+                placeholder="Name"
+              />
+              <VTextField v-model="data.sureName" placeholder="Surname" />
+              <VTextField v-model="data.telephoneNumber" placeholder="Phone" />
+              <VSelect v-model="data.userRole" :items="USER_ROLES" placeholder="Role" />
+            </VForm>
           </VCardText>
           <VCardActions class="d-flex justify-end mt-3">
             <VBtn color="primary" outlined @click="submit">Submit</VBtn>
@@ -29,12 +43,14 @@ import { useRegister, useEventHandlers } from './Register';
 export default defineComponent({
   setup() {
     const { data, USER_ROLES } = useRegister();
-    const { submit } = useEventHandlers(data);
+    const { submit, isFormValid, refForm } = useEventHandlers(data);
 
     return {
       data,
       USER_ROLES,
       submit,
+      isFormValid,
+      refForm,
     };
   },
 });

@@ -1,4 +1,4 @@
-import { reactive } from '@vue/composition-api';
+import { reactive, ref, Ref } from '@vue/composition-api';
 import { RegisterData, UserRole } from '@/types';
 
 const initialData = {
@@ -33,11 +33,19 @@ export function useRegister() {
 }
 
 export function useEventHandlers(data: RegisterData) {
+  const isFormValid: Ref<boolean> = ref(true);
+  const refForm: Ref<any> = ref(null);
+
   const submit = () => {
-    console.log('data', data);
+    refForm.value.validate();
+    if (isFormValid.value) {
+      console.log('data', data);
+    }
   };
 
   return {
     submit,
+    isFormValid,
+    refForm,
   };
 }
