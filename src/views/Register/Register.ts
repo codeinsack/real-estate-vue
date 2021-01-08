@@ -1,6 +1,7 @@
 import { reactive, ref, Ref } from '@vue/composition-api';
 import { RegisterData, UserRole } from '@/types';
 import VueRouter from 'vue-router';
+import { register } from '@/api';
 
 const initialData = {
   credentials: {
@@ -37,11 +38,11 @@ export function useEventHandlers(data: RegisterData, router: VueRouter) {
   const isFormValid: Ref<boolean> = ref(true);
   const refForm: Ref<any> = ref(null);
 
-  const submit = () => {
+  const submit = async () => {
     refForm.value.validate();
     if (isFormValid.value) {
-      console.log('data', data);
-      router.push('/dashboard');
+      await register(data);
+      router.replace('/dashboard');
     }
   };
 

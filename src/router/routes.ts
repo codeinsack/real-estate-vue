@@ -12,14 +12,17 @@ const routes = [
     path: '/dashboard',
     component: Dashboard,
     alias: '/',
+    name: 'dashboard',
   },
   {
     path: '/login',
     component: Login,
+    name: 'login',
   },
   {
     path: '/register',
     component: Register,
+    name: 'register',
   },
 ];
 
