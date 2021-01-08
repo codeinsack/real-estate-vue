@@ -1,14 +1,19 @@
 <template>
-  <div class="hello">HELLO WORLD</div>
+  <div>
+    <div class="hello">HELLO WORLD</div>
+    <div class="hello">HELLO WORLD</div>
+    <div class="hello">{{ a }}</div>
+  </div>
 </template>
 
 <script>
+import { useHelloWorld } from './HelloWorld';
+
 export default {
   setup() {
-    const { logout, user } = useApp();
+    const { a } = useHelloWorld();
     return {
-      logout,
-      user,
+      a,
     };
   },
 };
