@@ -3,11 +3,29 @@
     <VRow class="mt-6">
       <VCol v-for="apartment in apartments" :key="apartment.id" class="d-flex child-flex">
         <VCard class="mx-auto" max-width="300">
-          <VImg src="https://picsum.photos/300/400" height="200" />
-          <VCardTitle> Top western road trips </VCardTitle>
-          <VCardSubtitle> 1,000 miles of wonder </VCardSubtitle>
+          <VImg class="white--text align-end" src="https://picsum.photos/300/400" height="200">
+            <VCardTitle
+              v-text="
+                new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+                  apartment.price
+                )
+              "
+            />
+            <VCardSubtitle class="white--text">
+              <div>{{ `${apartment.owner.name} ${apartment.owner.sureName}` }}</div>
+              <div>{{ apartment.owner.telephoneNumber }}</div>
+            </VCardSubtitle>
+          </VImg>
+          <VCardTitle>
+            <span class="mr-1">{{ apartment.numberOfRooms }}</span>
+            <span>room(s)</span>
+          </VCardTitle>
+          <VCardSubtitle>
+            <div>{{ apartment.countryName }}</div>
+            <div>{{ apartment.address }}</div>
+          </VCardSubtitle>
           <VCardActions>
-            <VBtn color="orange lighten-2" text> Explore </VBtn>
+            <VBtn color="orange lighten-2" text> Have a deal </VBtn>
           </VCardActions>
         </VCard>
       </VCol>
