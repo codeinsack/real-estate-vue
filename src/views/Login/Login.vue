@@ -2,8 +2,8 @@
   <VContainer fill-height fluid>
     <VRow justify="center">
       <VCol cols="6">
-        <VCard class="pa-12">
-          <VCardTitle>Register</VCardTitle>
+        <VCard class="pa-12" width="500">
+          <VCardTitle>Login</VCardTitle>
           <VCardSubtitle>Please enter your data</VCardSubtitle>
           <VCardText>
             <VTextField v-model="data.email" placeholder="Email" />

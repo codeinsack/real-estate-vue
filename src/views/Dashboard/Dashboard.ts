@@ -1,13 +1,15 @@
 import { fetchApartments } from '@/api';
-import { onMounted } from '@vue/composition-api';
+import { onMounted, ref, Ref } from '@vue/composition-api';
 
 export function useDashboard() {
+  const apartments: Ref<boolean> = ref(true);
+
   onMounted(async () => {
     const { data } = await fetchApartments();
-    console.log('data', data);
+    apartments.value = data.resultList;
   });
 
   return {
-    a: 10,
+    apartments,
   };
 }
