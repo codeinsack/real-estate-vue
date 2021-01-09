@@ -1,5 +1,6 @@
 import { reactive, onMounted, ref } from '@vue/composition-api';
-import { fetchAllCountries } from '@/api';
+import { createNewApartment, fetchAllCountries } from '@/api';
+import VueRouter from 'vue-router';
 
 const initialData = {
   address: '',
@@ -8,7 +9,7 @@ const initialData = {
   price: 0,
 };
 
-export function useCreateApartment() {
+export function useCreateApartment(router: VueRouter) {
   const data: any = reactive({ ...initialData });
   const countries: any = ref([]);
 
@@ -17,8 +18,14 @@ export function useCreateApartment() {
     countries.value = data;
   });
 
-  const create = () => {
-    console.log(data);
+  const create = async () => {
+    const preparedData = {
+      ...data,
+      numberOfRooms: +data.numberOfRooms,
+      price: +data.price,
+    };
+    await createNewApartment(preparedData);
+    router.push('/dashboard');
   };
 
   return {

@@ -56,3 +56,9 @@ export const fetchAllCountries = async (): Promise<AxiosResponse<any>> => {
     return error;
   }
 };
+
+export const createNewApartment = async (body: any): Promise<AxiosResponse<any>> => {
+  return axios.post(`${baseUrl}/apartment`, body, {
+    withCredentials: true,
+  });
+};

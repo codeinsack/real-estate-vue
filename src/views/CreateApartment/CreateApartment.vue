@@ -2,7 +2,7 @@
   <VContainer fill-height fluid>
     <VRow justify="center">
       <VCol cols="6">
-        <VCard class="pa-12">
+        <VCard class="pa-12" width="500">
           <VCardTitle>Create new apartment</VCardTitle>
           <VCardSubtitle>Please enter your data</VCardSubtitle>
           <VCardText>
