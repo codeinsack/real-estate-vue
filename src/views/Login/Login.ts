@@ -19,6 +19,7 @@ export function useLogin() {
 export function useEventHandlers(data: Credentials, router: VueRouter) {
   const submit = async () => {
     await login(data);
+    localStorage.setItem('isAuthenticated', 'true');
     router.replace('/dashboard');
   };
 

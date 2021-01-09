@@ -6,8 +6,8 @@
           <VCardTitle>Login</VCardTitle>
           <VCardSubtitle>Please enter your data</VCardSubtitle>
           <VCardText>
-            <VTextField v-model="data.email" placeholder="Email" />
-            <VTextField v-model="data.password" type="password" placeholder="Password" />
+            <VTextField v-model="data.email" label="Email" placeholder="Email" />
+            <VTextField v-model="data.password" label="Password" placeholder="Password" />
           </VCardText>
           <VCardActions class="d-flex justify-end mt-3">
             <VBtn color="primary" outlined @click="submit">Submit</VBtn>

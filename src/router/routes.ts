@@ -13,6 +13,9 @@ const routes = [
     component: Dashboard,
     alias: '/',
     name: 'dashboard',
+    meta: {
+      protected: true,
+    },
   },
   {
     path: '/login',
@@ -27,5 +30,17 @@ const routes = [
 ];
 
 const router = new VueRouter({ mode: 'history', routes });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.protected)) {
+    if (localStorage.getItem('isAuthenticated')) {
+      next();
+    } else {
+      next('/login');
+    }
+  } else {
+    next();
+  }
+});
 
 export default router;
