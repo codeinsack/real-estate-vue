@@ -1,9 +1,13 @@
 <template>
   <VContainer>
     <VRow class="mt-6">
-      <VCol v-for="apartment in apartments" :key="apartment.id" class="d-flex child-flex">
+      <VCol v-for="(apartment, index) in apartments" :key="apartment.id" class="d-flex child-flex">
         <VCard class="mx-auto" max-width="300">
-          <VImg class="white--text align-end" src="https://picsum.photos/300/400" height="200">
+          <VImg
+            class="white--text align-end"
+            :src="require(`@/assets/${index + 1}.jpg`)"
+            height="200"
+          >
             <VCardTitle
               v-text="
                 new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
