@@ -9,7 +9,8 @@
             <VTextField v-model="data.email" label="Email" placeholder="Email" />
             <VTextField v-model="data.password" label="Password" placeholder="Password" />
           </VCardText>
-          <VCardActions class="d-flex justify-end mt-3">
+          <VCardActions class="d-flex justify-space-between mt-3">
+            <RouterLink class="ml-2" to="/register">Register</RouterLink>
             <VBtn color="primary" outlined @click="submit">Submit</VBtn>
           </VCardActions>
         </VCard>

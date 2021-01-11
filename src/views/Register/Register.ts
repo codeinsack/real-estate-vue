@@ -42,6 +42,7 @@ export function useEventHandlers(data: RegisterData, router: VueRouter) {
     refForm.value.validate();
     if (isFormValid.value) {
       await register(data);
+      localStorage.setItem('isAuthenticated', 'true');
       router.replace('/dashboard');
     }
   };
