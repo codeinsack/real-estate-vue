@@ -1,8 +1,27 @@
 <template>
   <VContainer>
     <VRow class="mt-6">
-      <VCol class="d-flex child-flex">
-        <VCard class="mx-auto" max-width="300"> LIST OF DEALS </VCard>
+      <VCol v-for="(deal, index) in deals" :key="index" class="d-flex child-flex">
+        <VCard class="mx-auto pa-3" max-width="300">
+          <VCardTitle>
+            <div class="mr-1">Buyer: {{ `${deal.buyer.name} ${deal.buyer.sureName}` }}</div>
+            <div class="mr-1">Seller: {{ `${deal.seller.name} ${deal.seller.sureName}` }}</div>
+          </VCardTitle>
+          <VCardSubtitle>
+            <div>{{ deal.apartmentDto.address }}</div>
+            <div>
+              {{
+                new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+                  deal.apartmentDto.price
+                )
+              }}
+            </div>
+          </VCardSubtitle>
+          <VCardActions class="d-flex justify-end">
+            <VBtn color="error" outlined> Cancel </VBtn>
+            <VBtn color="success" outlined> Confirm </VBtn>
+          </VCardActions>
+        </VCard>
       </VCol>
     </VRow>
   </VContainer>

@@ -6,6 +6,7 @@ export function useDeals() {
 
   onMounted(async () => {
     const { data } = await fetchDealsByStatus();
+    deals.value = data.result;
     console.log('data', data);
   });
 

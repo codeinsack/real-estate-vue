@@ -29,7 +29,9 @@
             <div>{{ apartment.address }}</div>
           </VCardSubtitle>
           <VCardActions>
-            <VBtn color="orange lighten-2" text> Have a deal </VBtn>
+            <VBtn color="orange lighten-2" text @click="createDeal(apartment.id)">
+              Have a deal
+            </VBtn>
           </VCardActions>
         </VCard>
       </VCol>
@@ -43,10 +45,11 @@ import { useDashboard } from './Dashboard';
 
 export default defineComponent({
   setup(props, { emit }) {
-    const { apartments } = useDashboard(emit);
+    const { apartments, createDeal } = useDashboard(emit);
 
     return {
       apartments,
+      createDeal,
     };
   },
 });

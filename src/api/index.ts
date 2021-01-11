@@ -76,3 +76,14 @@ export const fetchDealsByStatus = async (
     },
   });
 };
+
+export const createDeal = async (apartmentId: number): Promise<AxiosResponse<any>> => {
+  try {
+    return await axios.post(`${baseUrl}/deal/${apartmentId}`, null, {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
