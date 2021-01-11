@@ -42,8 +42,8 @@ import { defineComponent } from '@vue/composition-api';
 import { useDashboard } from './Dashboard';
 
 export default defineComponent({
-  setup() {
-    const { apartments } = useDashboard();
+  setup(props, { emit }) {
+    const { apartments } = useDashboard(emit);
 
     return {
       apartments,

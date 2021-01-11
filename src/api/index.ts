@@ -62,3 +62,9 @@ export const createNewApartment = async (body: any): Promise<AxiosResponse<any>>
     withCredentials: true,
   });
 };
+
+export const fetchCurrentUser = async (): Promise<AxiosResponse<any>> => {
+  return axios.get(`${baseUrl}/user/currentUser`, {
+    withCredentials: true,
+  });
+};
