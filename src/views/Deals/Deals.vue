@@ -5,6 +5,7 @@
         <VSelect
           v-model="selectedDealStatus"
           :items="DEAL_STATUSES"
+          label="Deal status"
           placeholder="Deal status"
           outlined
           dense
