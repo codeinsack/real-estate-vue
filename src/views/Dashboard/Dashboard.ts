@@ -10,6 +10,7 @@ export function useDashboard(emit: any) {
     apartments.value = apartmentsData.resultList;
     const { data: user } = await api.fetchCurrentUser();
     const userData = pick(user, ['name', 'sureName', 'userRole']);
+    localStorage.setItem('user', JSON.stringify(userData));
     emit('userDataFetched', userData);
   });
 
