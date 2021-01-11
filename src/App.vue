@@ -18,6 +18,7 @@
             </div>
           </div>
           <VBtn class="mr-3" to="/new-apartment" color="success" outlined>Add new apartment</VBtn>
+          <VBtn class="mr-3" to="/deals" color="primary" outlined>Deals</VBtn>
           <VBtn color="primary" outlined @click="logout">Logout</VBtn>
         </div>
       </VAppBar>

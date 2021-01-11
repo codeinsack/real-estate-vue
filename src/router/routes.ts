@@ -5,6 +5,7 @@ import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import Register from '@/views/Register/Register.vue';
 import Login from '@/views/Login/Login.vue';
 import CreateApartment from '@/views/CreateApartment/CreateApartment.vue';
+import Deals from '@/views/Deals/Deals.vue';
 
 Vue.use(VueRouter);
 
@@ -32,6 +33,14 @@ const routes = [
     path: '/new-apartment',
     component: CreateApartment,
     name: 'new-apartment',
+    meta: {
+      protected: true,
+    },
+  },
+  {
+    path: '/deals',
+    component: Deals,
+    name: 'deals',
     meta: {
       protected: true,
     },

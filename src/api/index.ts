@@ -25,14 +25,9 @@ export const register = async (body: any): Promise<AxiosResponse<any>> => {
 };
 
 export const login = async (body: any): Promise<AxiosResponse<any>> => {
-  try {
-    return await axios.post(`${baseUrl}/user/login`, body, {
-      withCredentials: true,
-    });
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
+  return axios.post(`${baseUrl}/user/login`, body, {
+    withCredentials: true,
+  });
 };
 
 export const logout = async (): Promise<AxiosResponse<any>> => {
@@ -66,5 +61,18 @@ export const createNewApartment = async (body: any): Promise<AxiosResponse<any>>
 export const fetchCurrentUser = async (): Promise<AxiosResponse<any>> => {
   return axios.get(`${baseUrl}/user/currentUser`, {
     withCredentials: true,
+  });
+};
+
+export const fetchDealsByStatus = async (
+  status = 'IN_PROGRESS',
+  direction = 'ASC'
+): Promise<AxiosResponse<any>> => {
+  return axios.get(`${baseUrl}/deals`, {
+    withCredentials: true,
+    params: {
+      status,
+      direction,
+    },
   });
 };
