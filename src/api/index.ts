@@ -87,3 +87,14 @@ export const createDeal = async (apartmentId: number): Promise<AxiosResponse<any
     return error;
   }
 };
+
+export const cancelDeal = async (dealId: number): Promise<AxiosResponse<any>> => {
+  try {
+    return await axios.put(`${baseUrl}/deal/cancel/${dealId}`, null, {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

@@ -1,6 +1,17 @@
 <template>
   <VContainer>
     <VRow class="mt-6">
+      <VCol cols="5">
+        <VSelect
+          v-model="selectedDealStatus"
+          :items="DEAL_STATUSES"
+          placeholder="Deal status"
+          outlined
+          dense
+        />
+      </VCol>
+    </VRow>
+    <VRow class="mt-6">
       <VCol v-for="(deal, index) in deals" :key="index" class="d-flex child-flex">
         <VCard class="mx-auto pa-3" max-width="300">
           <VCardTitle>
@@ -18,7 +29,7 @@
             </div>
           </VCardSubtitle>
           <VCardActions class="d-flex justify-end">
-            <VBtn color="error" outlined> Cancel </VBtn>
+            <VBtn color="error" outlined @click="cancelDeal(deal.id)"> Cancel </VBtn>
             <VBtn color="success" outlined> Confirm </VBtn>
           </VCardActions>
         </VCard>
@@ -33,10 +44,13 @@ import { useDeals } from './Deals';
 
 export default defineComponent({
   setup() {
-    const { deals } = useDeals();
+    const { deals, cancelDeal, DEAL_STATUSES, selectedDealStatus } = useDeals();
 
     return {
       deals,
+      cancelDeal,
+      DEAL_STATUSES,
+      selectedDealStatus,
     };
   },
 });
