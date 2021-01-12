@@ -28,7 +28,7 @@
             <div>{{ apartment.countryName }}</div>
             <div>{{ apartment.address }}</div>
           </VCardSubtitle>
-          <VCardActions v-if="userData.userRole === 'BUYER'">
+          <VCardActions v-if="userData && userData.userRole === 'BUYER'">
             <VBtn color="orange lighten-2" text @click="createDeal(apartment.id)">
               Have a deal
             </VBtn>

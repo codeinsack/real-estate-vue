@@ -20,10 +20,10 @@ export function useApp(router: VueRouter) {
   };
 
   const fullName: ComputedRef<any> = computed(
-    () => `${userData.value.name} ${userData.value.sureName}`
+    () => `${userData.value.name} ${userData.value?.sureName}`
   );
 
-  const userRole: ComputedRef<any> = computed(() => capitalize(userData.value.userRole));
+  const userRole: ComputedRef<any> = computed(() => capitalize(userData.value?.userRole));
 
   return {
     logout,

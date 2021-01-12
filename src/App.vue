@@ -19,7 +19,7 @@
           </div>
           <VBtn class="mr-3" to="/" color="warning" outlined>Go to apartments</VBtn>
           <VBtn
-            v-if="userData.userRole === 'SELLER'"
+            v-if="userRole && userData.userRole === 'SELLER'"
             class="mr-3"
             to="/new-apartment"
             color="success"
