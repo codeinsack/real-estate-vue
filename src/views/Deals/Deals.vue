@@ -30,7 +30,7 @@
             </div>
           </VCardSubtitle>
           <VCardActions
-            v-if="deal.status === 'IN_PROGRESS' || (userData && userData.userRole === 'SELLER')"
+            v-if="deal.status === 'IN_PROGRESS' && userData && userData.userRole === 'SELLER'"
             class="d-flex justify-end"
           >
             <VBtn color="error" outlined @click="cancelDeal(deal.id)"> Cancel </VBtn>
