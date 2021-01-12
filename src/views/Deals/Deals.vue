@@ -29,12 +29,16 @@
               }}
             </div>
           </VCardSubtitle>
-          <VCardActions
-            v-if="deal.status === 'IN_PROGRESS' && userData && userData.userRole === 'SELLER'"
-            class="d-flex justify-end"
-          >
+          <VCardActions v-if="deal.status === 'IN_PROGRESS'" class="d-flex justify-end">
             <VBtn color="error" outlined @click="cancelDeal(deal.id)"> Cancel </VBtn>
-            <VBtn color="success" outlined @click="confirmDeal(deal)"> Confirm </VBtn>
+            <VBtn
+              v-if="userData && userData.userRole === 'SELLER'"
+              color="success"
+              outlined
+              @click="confirmDeal(deal)"
+            >
+              Confirm
+            </VBtn>
           </VCardActions>
         </VCard>
       </VCol>
