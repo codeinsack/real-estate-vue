@@ -30,7 +30,12 @@ export function useDeals() {
   });
 
   const cancelDeal = async (dealId: number) => {
-    await api.cancelDeal(dealId);
+    await api.changeDealStatus(dealId, 'CANCELED');
+    await loadDeals(selectedDealStatus.value);
+  };
+
+  const confirmDeal = async (deal: any) => {
+    await api.changeDealStatus(deal.id, 'DONE');
     await loadDeals(selectedDealStatus.value);
   };
 
@@ -41,5 +46,6 @@ export function useDeals() {
     cancelDeal,
     DEAL_STATUSES,
     selectedDealStatus,
+    confirmDeal,
   };
 }

@@ -88,9 +88,9 @@ export const createDeal = async (apartmentId: number): Promise<AxiosResponse<any
   }
 };
 
-export const cancelDeal = async (dealId: number): Promise<AxiosResponse<any>> => {
+export const changeDealStatus = async (dealId: number, status): Promise<AxiosResponse<any>> => {
   try {
-    return await axios.put(`${baseUrl}/deal/cancel/${dealId}`, null, {
+    return await axios.put(`${baseUrl}/deal/status/${dealId}/${status}`, null, {
       withCredentials: true,
     });
   } catch (error) {

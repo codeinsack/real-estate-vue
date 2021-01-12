@@ -31,7 +31,7 @@
           </VCardSubtitle>
           <VCardActions class="d-flex justify-end">
             <VBtn color="error" outlined @click="cancelDeal(deal.id)"> Cancel </VBtn>
-            <VBtn color="success" outlined> Confirm </VBtn>
+            <VBtn color="success" outlined @click="confirmDeal(deal)"> Confirm </VBtn>
           </VCardActions>
         </VCard>
       </VCol>
@@ -45,13 +45,14 @@ import { useDeals } from './Deals';
 
 export default defineComponent({
   setup() {
-    const { deals, cancelDeal, DEAL_STATUSES, selectedDealStatus } = useDeals();
+    const { deals, cancelDeal, DEAL_STATUSES, selectedDealStatus, confirmDeal } = useDeals();
 
     return {
       deals,
       cancelDeal,
       DEAL_STATUSES,
       selectedDealStatus,
+      confirmDeal,
     };
   },
 });
