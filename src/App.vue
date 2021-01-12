@@ -18,13 +18,21 @@
             </div>
           </div>
           <VBtn class="mr-3" to="/" color="warning" outlined>Go to apartments</VBtn>
-          <VBtn class="mr-3" to="/new-apartment" color="success" outlined>Add new apartment</VBtn>
+          <VBtn
+            v-if="userData.userRole === 'SELLER'"
+            class="mr-3"
+            to="/new-apartment"
+            color="success"
+            outlined
+          >
+            Add new apartment
+          </VBtn>
           <VBtn class="mr-3" to="/deals" color="primary" outlined>Deals</VBtn>
           <VBtn color="primary" outlined @click="logout">Logout</VBtn>
         </div>
       </VAppBar>
       <VMain>
-        <RouterView @userDataFetched="setUserData" />
+        <RouterView :userData="userData" @userDataFetched="setUserData" />
       </VMain>
     </template>
   </VApp>

@@ -28,7 +28,7 @@
             <div>{{ apartment.countryName }}</div>
             <div>{{ apartment.address }}</div>
           </VCardSubtitle>
-          <VCardActions>
+          <VCardActions v-if="userData.userRole === 'BUYER'">
             <VBtn color="orange lighten-2" text @click="createDeal(apartment.id)">
               Have a deal
             </VBtn>
@@ -44,6 +44,11 @@ import { defineComponent } from '@vue/composition-api';
 import { useDashboard } from './Dashboard';
 
 export default defineComponent({
+  props: {
+    userData: {
+      type: Object,
+    },
+  },
   setup(props, { emit }) {
     const { apartments, createDeal } = useDashboard(emit);
 

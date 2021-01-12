@@ -29,7 +29,10 @@
               }}
             </div>
           </VCardSubtitle>
-          <VCardActions class="d-flex justify-end">
+          <VCardActions
+            v-if="deal.status === 'IN_PROGRESS' || userData.userRole === 'SELLER'"
+            class="d-flex justify-end"
+          >
             <VBtn color="error" outlined @click="cancelDeal(deal.id)"> Cancel </VBtn>
             <VBtn color="success" outlined @click="confirmDeal(deal)"> Confirm </VBtn>
           </VCardActions>
@@ -44,6 +47,11 @@ import { defineComponent } from '@vue/composition-api';
 import { useDeals } from './Deals';
 
 export default defineComponent({
+  props: {
+    userData: {
+      type: Object,
+    },
+  },
   setup() {
     const { deals, cancelDeal, DEAL_STATUSES, selectedDealStatus, confirmDeal } = useDeals();
 
