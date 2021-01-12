@@ -7,7 +7,12 @@
           <VCardSubtitle>Please enter your data</VCardSubtitle>
           <VCardText>
             <VTextField v-model="data.email" label="Email" placeholder="Email" />
-            <VTextField v-model="data.password" label="Password" placeholder="Password" />
+            <VTextField
+              v-model="data.password"
+              label="Password"
+              type="password"
+              placeholder="Password"
+            />
           </VCardText>
           <VCardActions class="d-flex justify-space-between mt-3">
             <RouterLink class="ml-2" to="/register">Register</RouterLink>
